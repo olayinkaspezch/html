@@ -60,46 +60,147 @@ button:hover {
 
 <div class="card">
 
-    <h1>🎮 Choose Your Hero</h1>
+    <h1>🐉 Dragon Battle RPG</h1>
 
-    <button onclick="chooseHero('wizard')">🧙 Wizard</button>
+    <h2 id="heroName">Choose Your Hero</h2>
 
-    <button onclick="chooseHero('warrior')">⚔️ Warrior</button>
+    <button onclick="chooseHero('🧙 Wizard',15)">🧙 Wizard</button>
+    <button onclick="chooseHero('⚔️ Warrior',20)">⚔️ Warrior</button>
+    <button onclick="chooseHero('🏹 Archer',18)">🏹 Archer</button>
 
-    <button onclick="chooseHero('archer')">🏹 Archer</button>
+    <hr>
 
-    <h2 id="heroName">Select a Hero</h2>
+    <p>❤️ Hero Health: <span id="heroHealth">100</span></p>
+    <p>🐉 Dragon Health: <span id="dragonHealth">100</span></p>
 
-    <p id="heroDescription">
-        Click one of the heroes above to begin your adventure!
-    </p>
+    <p>⭐ Level: <span id="level">1</span></p>
+    <p>💰 Gold: <span id="gold">0</span></p>
+    <p>🧪 Potions: <span id="potions">3</span></p>
+
+    <button onclick="attack()">⚔️ Attack</button>
+    <button onclick="heal()">🧪 Use Potion</button>
+
+    <h3 id="log">Choose a hero to begin!</h3>
 
 </div>
 
 <script>
-function chooseHero(hero) {
 
-    if (hero === "wizard") {
-        document.getElementById("heroName").innerHTML = "🧙 Wizard";
-        document.getElementById("heroDescription").innerHTML =
-            "A master of magic who casts powerful spells.";
-    }
+let hero = "";
+let heroPower = 0;
 
-    if (hero === "warrior") {
-        document.getElementById("heroName").innerHTML = "⚔️ Warrior";
-        document.getElementById("heroDescription").innerHTML =
-            "A fearless fighter with incredible strength.";
-    }
+let heroHealth = 100;
+let dragonHealth = 100;
 
-    if (hero === "archer") {
-        document.getElementById("heroName").innerHTML = "🏹 Archer";
-        document.getElementById("heroDescription").innerHTML =
-            "A skilled hunter who never misses a target.";
-    }
+let level = 1;
+let gold = 0;
+let potions = 3;
 
+function chooseHero(name,power){
+
+    hero = name;
+    heroPower = power;
+
+    document.getElementById("heroName").innerHTML =
+        "Hero: " + hero;
+
+    document.getElementById("log").innerHTML =
+        hero + " enters the battle!";
 }
-</script>
 
+function attack(){
+
+    if(hero === ""){
+        document.getElementById("log").innerHTML =
+            "Choose a hero first!";
+        return;
+    }
+
+    let damage =
+        Math.floor(Math.random() * heroPower) + 1;
+
+    dragonHealth -= damage;
+
+    if(dragonHealth < 0){
+        dragonHealth = 0;
+    }
+
+    document.getElementById("dragonHealth").innerHTML =
+        dragonHealth;
+
+    if(dragonHealth === 0){
+
+        gold += 50;
+        level++;
+
+        dragonHealth = 100 + (level * 20);
+
+        document.getElementById("gold").innerHTML = gold;
+        document.getElementById("level").innerHTML = level;
+        document.getElementById("dragonHealth").innerHTML =
+            dragonHealth;
+
+        document.getElementById("log").innerHTML =
+            "🏆 Dragon defeated! New dragon appears!";
+        return;
+    }
+
+    dragonAttack();
+
+    document.getElementById("log").innerHTML =
+        hero + " hits for " + damage + " damage!";
+}
+
+function dragonAttack(){
+
+    let damage =
+        Math.floor(Math.random() * 15) + 1;
+
+    heroHealth -= damage;
+
+    if(heroHealth < 0){
+        heroHealth = 0;
+    }
+
+    document.getElementById("heroHealth").innerHTML =
+        heroHealth;
+
+    if(heroHealth === 0){
+
+        document.getElementById("log").innerHTML =
+            "💀 Game Over!";
+    }
+}
+
+function heal(){
+
+    if(potions <= 0){
+
+        document.getElementById("log").innerHTML =
+            "No potions left!";
+        return;
+    }
+
+    potions--;
+
+    heroHealth += 30;
+
+    if(heroHealth > 100){
+        heroHealth = 100;
+    }
+
+    document.getElementById("potions").innerHTML =
+        potions;
+
+    document.getElementById("heroHealth").innerHTML =
+        heroHealth;
+
+    document.getElementById("log").innerHTML =
+        "🧪 Potion used!";
+}
+
+</script>
+    
 </body>
 
 let currentHero = "";
