@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Yinka's Website</title>
+    <title>David's Website</title>
 
     <style>
         body {
@@ -38,36 +38,71 @@
         button:hover {
             background: #f0f0f0;
         }
+        button {
+    margin: 10px;
+    background: white;
+    color: #2196f3;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
     </style>
 </head>
 
 <body>
 
-    <div class=" <h2>Choose Your Character</h2>
+    <body>
 
-        <button>🧙 Wizard</button>
-        <button>⚔️ Warrior</button>
-        <button>🏹 Archer</button>
-        <button>🐉 Dragon Rider</button>
+<div class="card">
 
-        <button onclick="sayHello()">
-            Click Me
-        </button>
+    <h1>🎮 Choose Your Hero</h1>
 
-        <p id="message"></p>">
-        <h1>👋 Welcome!</h1>
+    <button onclick="chooseHero('wizard')">🧙 Wizard</button>
 
-        <h2>My Name is yinka</h2>
+    <button onclick="chooseHero('warrior')">⚔️ Warrior</button>
 
-        <p>
-            I am learning HTML, CSS and JavaScript.
-        </p>
+    <button onclick="chooseHero('archer')">🏹 Archer</button>
 
-        <p>
-            This website is hosted on GitHub Pages.
-        </p>
-       
-    </div>
+    <h2 id="heroName">Select a Hero</h2>
+
+    <p id="heroDescription">
+        Click one of the heroes above to begin your adventure!
+    </p>
+
+</div>
+
+<script>
+function chooseHero(hero) {
+
+    if (hero === "wizard") {
+        document.getElementById("heroName").innerHTML = "🧙 Wizard";
+        document.getElementById("heroDescription").innerHTML =
+            "A master of magic who casts powerful spells.";
+    }
+
+    if (hero === "warrior") {
+        document.getElementById("heroName").innerHTML = "⚔️ Warrior";
+        document.getElementById("heroDescription").innerHTML =
+            "A fearless fighter with incredible strength.";
+    }
+
+    if (hero === "archer") {
+        document.getElementById("heroName").innerHTML = "🏹 Archer";
+        document.getElementById("heroDescription").innerHTML =
+            "A skilled hunter who never misses a target.";
+    }
+
+}
+</script>
+
+</body>
 
     <script>
         function sayHello() {
