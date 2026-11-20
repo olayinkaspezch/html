@@ -58,52 +58,76 @@ button:hover {
 
 <body>
 
-    <body>
-
 <div class="card">
 
-    <h1>🎮 Choose Your Hero</h1>
+    <h1>🐉 Hero vs Dragon</h1>
 
-    <button onclick="chooseHero('wizard')">🧙 Wizard</button>
+    <h2 id="hero">Choose Your Hero</h2>
 
-    <button onclick="chooseHero('warrior')">⚔️ Warrior</button>
+    <button onclick="chooseHero('Wizard')">🧙 Wizard</button>
+    <button onclick="chooseHero('Warrior')">⚔️ Warrior</button>
+    <button onclick="chooseHero('Archer')">🏹 Archer</button>
 
-    <button onclick="chooseHero('archer')">🏹 Archer</button>
+    <hr>
 
-    <h2 id="heroName">Select a Hero</h2>
+    <h2>Dragon Health: <span id="dragonHealth">100</span> ❤️</h2>
 
-    <p id="heroDescription">
-        Click one of the heroes above to begin your adventure!
-    </p>
+    <button onclick="attack()">⚔️ Attack Dragon</button>
+
+    <p id="battleLog"></p>
 
 </div>
 
 <script>
+
+let currentHero = "";
+let dragonHealth = 100;
+
 function chooseHero(hero) {
+    currentHero = hero;
 
-    if (hero === "wizard") {
-        document.getElementById("heroName").innerHTML = "🧙 Wizard";
-        document.getElementById("heroDescription").innerHTML =
-            "A master of magic who casts powerful spells.";
-    }
+    document.getElementById("hero").innerHTML =
+        "Chosen Hero: " + hero;
 
-    if (hero === "warrior") {
-        document.getElementById("heroName").innerHTML = "⚔️ Warrior";
-        document.getElementById("heroDescription").innerHTML =
-            "A fearless fighter with incredible strength.";
-    }
-
-    if (hero === "archer") {
-        document.getElementById("heroName").innerHTML = "🏹 Archer";
-        document.getElementById("heroDescription").innerHTML =
-            "A skilled hunter who never misses a target.";
-    }
-
+    document.getElementById("battleLog").innerHTML =
+        hero + " is ready for battle!";
 }
+
+function attack() {
+
+    if (currentHero === "") {
+        document.getElementById("battleLog").innerHTML =
+            "Choose a hero first!";
+        return;
+    }
+
+    let damage = Math.floor(Math.random() * 20) + 1;
+
+    dragonHealth -= damage;
+
+    if (dragonHealth < 0) {
+        dragonHealth = 0;
+    }
+
+    document.getElementById("dragonHealth").innerHTML =
+        dragonHealth;
+
+    document.getElementById("battleLog").innerHTML =
+        currentHero +
+        " dealt " +
+        damage +
+        " damage!";
+
+    if (dragonHealth === 0) {
+        document.getElementById("battleLog").innerHTML =
+            "🏆 Victory! The dragon has been defeated!";
+    }
+}
+
 </script>
 
 </body>
-
+   
     <script>
         function sayHello() {
             document.getElementById("message").innerHTML =
