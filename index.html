@@ -75,7 +75,7 @@ button:hover {
 
     <p>⭐ Level: <span id="level">1</span></p>
     <p>💰 Gold: <span id="gold">0</span></p>
-      <p>🗡️ Weapon: <span id="weapon">Wooden Sword</span></p>
+    <p>🗡️ Weapon: <span id="weapon">Wooden Sword</span></p>
 
 <button onclick="buySword()">
     Buy Iron Sword (100 Gold)
@@ -131,9 +131,11 @@ function attack(){
             "Choose a hero first!";
         return;
     }
-
+    
     let damage =
-        Math.floor(Math.random() * heroPower) + 1;
+    Math.floor(Math.random() * heroPower) +
+    1 +
+    weaponBonus;
 
     dragonHealth -= damage;
 
@@ -213,6 +215,57 @@ function heal(){
 
     document.getElementById("log").innerHTML =
         "🧪 Potion used!";
+}
+    function buySword(){
+
+    if(gold < 100){
+
+        document.getElementById("log").innerHTML =
+            "Not enough gold!";
+        return;
+    }
+
+    gold -= 100;
+
+    weapon = "Iron Sword";
+    weaponBonus = 10;
+
+    document.getElementById("gold").innerHTML = gold;
+    document.getElementById("weapon").innerHTML = weapon;
+
+    document.getElementById("log").innerHTML =
+        "⚔️ You bought an Iron Sword!";
+}
+
+function saveGame(){
+
+    localStorage.setItem("gold", gold);
+    localStorage.setItem("level", level);
+    localStorage.setItem("weapon", weapon);
+    localStorage.setItem("weaponBonus", weaponBonus);
+
+    document.getElementById("log").innerHTML =
+        "💾 Game Saved!";
+}
+
+function loadGame(){
+
+    gold = Number(localStorage.getItem("gold")) || 0;
+    level = Number(localStorage.getItem("level")) || 1;
+
+    weapon =
+        localStorage.getItem("weapon") ||
+        "Wooden Sword";
+
+    weaponBonus =
+        Number(localStorage.getItem("weaponBonus")) || 0;
+
+    document.getElementById("gold").innerHTML = gold;
+    document.getElementById("level").innerHTML = level;
+    document.getElementById("weapon").innerHTML = weapon;
+
+    document.getElementById("log").innerHTML =
+        "📂 Save Loaded!";
 }
 
 </script>
