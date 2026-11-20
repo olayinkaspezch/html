@@ -67,6 +67,19 @@ button:hover {
     <button onclick="chooseHero('🧙 Wizard',15)">🧙 Wizard</button>
     <button onclick="chooseHero('⚔️ Warrior',20)">⚔️ Warrior</button>
     <button onclick="chooseHero('🏹 Archer',18)">🏹 Archer</button>
+    <p>🗡️ Weapon: <span id="weapon">Wooden Sword</span></p>
+
+<button onclick="buySword()">
+    Buy Iron Sword (100 Gold)
+</button>
+
+<button onclick="saveGame()">
+    💾 Save Game
+</button>
+
+<button onclick="loadGame()">
+    📂 Load Game
+</button>
 
     <hr>
 
@@ -85,6 +98,9 @@ button:hover {
 </div>
 
 <script>
+    let weapon = "Wooden Sword";
+let weaponBonus = 0;
+    
 
 let hero = "";
 let heroPower = 0;
@@ -202,61 +218,3 @@ function heal(){
 </script>
     
 </body>
-
-let currentHero = "";
-let dragonHealth = 100;
-
-function chooseHero(hero) {
-    currentHero = hero;
-
-    document.getElementById("hero").innerHTML =
-        "Chosen Hero: " + hero;
-
-    document.getElementById("battleLog").innerHTML =
-        hero + " is ready for battle!";
-}
-
-function attack() {
-
-    if (currentHero === "") {
-        document.getElementById("battleLog").innerHTML =
-            "Choose a hero first!";
-        return;
-    }
-
-    let damage = Math.floor(Math.random() * 20) + 1;
-
-    dragonHealth -= damage;
-
-    if (dragonHealth < 0) {
-        dragonHealth = 0;
-    }
-
-    document.getElementById("dragonHealth").innerHTML =
-        dragonHealth;
-
-    document.getElementById("battleLog").innerHTML =
-        currentHero +
-        " dealt " +
-        damage +
-        " damage!";
-
-    if (dragonHealth === 0) {
-        document.getElementById("battleLog").innerHTML =
-            "🏆 Victory! The dragon has been defeated!";
-    }
-}
-
-</script>
-
-</body>
-   
-    <script>
-        function sayHello() {
-            document.getElementById("message").innerHTML =
-                "🚀 Great job! You just used JavaScript!";
-        }
-    </script>
-
-</body>
-</html>
