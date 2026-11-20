@@ -1,10 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My First Website</title>
+    <title>Yinka's Website</title>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            margin: 0;
+            padding: 50px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 3em;
+        }
+
+        button {
+            background: white;
+            color: #2196f3;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        button:hover {
+            background: #f0f0f0;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello World!</h1>
-    <p>My website is working!</p>
+
+    <div class="card">
+        <h1>👋 Welcome!</h1>
+
+        <h2>My Name is David</h2>
+
+        <p>
+            I am learning HTML, CSS and JavaScript.
+        </p>
+
+        <p>
+            This website is hosted on GitHub Pages.
+        </p>
+
+        <button onclick="sayHello()">
+            Click Me
+        </button>
+
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function sayHello() {
+            document.getElementById("message").innerHTML =
+                "🚀 Great job! You just used JavaScript!";
+        }
+    </script>
+
 </body>
 </html>
