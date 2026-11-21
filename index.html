@@ -99,6 +99,11 @@ Choose a hero and defeat the beast!
     <span id="enemyImage">🐉</span>
 
 </div>
+ <div id="arena">
+    <span id="heroImage">❓</span>
+    ⚔️
+    <span id="enemyImage">🐉</span>
+</div>
 
     <p>❤️ Hero Health: <span id="heroHealth">100</span></p>
     <h2 id="enemyName">🐉 Dragon</h2>
@@ -131,6 +136,19 @@ Choose a hero and defeat the beast!
     <button onclick="heal()">🧪 Use Potion</button>
 
     <h3 id="log">Choose a hero to begin!</h3>
+ <h2>🗺️ Adventure Map</h2>
+
+<button onclick="travel('forest')">
+🌲 Forest
+</button>
+
+<button onclick="travel('cave')">
+🦇 Cave
+</button>
+
+<button onclick="travel('dragon')">
+🐉 Dragon Mountain
+</button>
 
 </div>
 
@@ -149,7 +167,17 @@ let level = 1;
 let gold = 0;
 let potions = 3;
 
-function chooseHero(name,power){
+function chooseHero(if(name.includes("Wizard")){
+    document.getElementById("heroImage").innerHTML = "🧙";
+}
+
+if(name.includes("Warrior")){
+    document.getElementById("heroImage").innerHTML = "⚔️";
+}
+
+if(name.includes("Archer")){
+    document.getElementById("heroImage").innerHTML = "🏹";
+}){
 
     hero = name;
     heroPower = power;
