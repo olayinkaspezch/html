@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
     <title>yinka's Website</title>
@@ -53,6 +53,16 @@
 button:hover {
     transform: scale(1.1);
 }
+        #arena{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+
+    font-size:120px;
+
+    margin:30px;
+}
     </style>
 </head>
 
@@ -73,11 +83,33 @@ Choose a hero and defeat the beast!
     <button onclick="chooseHero('🏹 Archer',20)">🏹 Archer</button>
   
     <hr>
+    <div style="font-size:100px;">
+    🧙 ⚔️ 🐉
+    </div>
+
+    <h2>⚔️ Battle Arena ⚔️</h2>
+    <div id="arena">
+
+    <span id="heroImage">🧙</span>
+
+    <span style="font-size:60px;">
+        ⚔️
+    </span>
+
+    <span id="enemyImage">🐉</span>
+
+</div>
 
     <p>❤️ Hero Health: <span id="heroHealth">100</span></p>
     <h2 id="enemyName">🐉 Dragon</h2>
     <p>🐉 Dragon Health: <span id="dragonHealth">100</span></p>
+<div style="font-size:120px;">
+    <span id="heroImage">🧙</span>
 
+    ⚔️
+
+    <span id="enemyImage">🐉</span>
+</div>
     <p>⭐ Level: <span id="level">1</span></p>
     <p>💰 Gold: <span id="gold">0</span></p>
     <p>🗡️ Weapon: <span id="weapon">Wooden Sword</span></p>
